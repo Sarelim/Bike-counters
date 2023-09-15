@@ -4,7 +4,7 @@ streamlit
 pathlib
 seaborn
 matplotlib<3.6.1
-sklearn
+scikit-learn
 folium
 ramp-workflow
 pyarrow

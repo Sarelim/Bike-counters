@@ -35,6 +35,15 @@ st.pyplot()
 ##Linear regression
 
 def _encode_dates(X):
+    '''
+    Encode date-related features from a DataFrame into separate columns.
+
+    Parameters:
+        X (DataFrame): The input DataFrame containing a 'date' column to be encoded.
+
+    Returns:
+        DataFrame: A modified DataFrame with additional columns for year, month, day, weekday, and hour.
+    '''
     X = X.copy()  # modify a copy of X
     # Encode the date information from the DateOfDeparture columns
     X.loc[:, "year"] = X["date"].dt.year
@@ -55,6 +64,7 @@ import problem
 #Linear Regressor
 from sklearn.linear_model import Ridge
 
+#preprocess data
 X_train, y_train = _encode_dates(train_data.drop(columns=["bike_count", "counter_name", "site_name", "log_bike_count", "counter_installation_date", "counter_technical_id"])), train_data["log_bike_count"]
 X_test, y_test = _encode_dates(test_data.drop(columns=["bike_count", "counter_name", "site_name", "log_bike_count", "counter_installation_date", "counter_technical_id"])), test_data["log_bike_count"]
 X_train [["site_id", "counter_id"]] = X_train["counter_id"].str.split("-", expand=True)
@@ -66,6 +76,7 @@ regressor.fit(X_train, y_train)
 
 #Visualization
 
+# Plot actual vs. predicted bike count for a specific counter A
 st.write("##### Bike Count prediction for counter A")
 mask = (
     (X_test["counter_id"] == "102007049")
@@ -87,7 +98,7 @@ ax.set_ylabel("bike_count")
 plt.legend()
 st.pyplot()
 
-
+# Plot actual vs. predicted bike count for a specific counter B
 st.write("##### Bike Count prediction for counter B")
 mask = (
     (X_test["counter_id"] == "104057445")

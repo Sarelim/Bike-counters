@@ -1,6 +1,5 @@
 numpy
 pandas
-rampwf
 streamlit
 pathlib
 seaborn
@@ -8,3 +7,4 @@ matplotlib<3.6.1
 sklearn
 folium
 ramp-workflow
+pyarrow

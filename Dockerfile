@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/sarelim/bike_counters.git .
+RUN git clone https://github.com/Sarelim/bike-counters.git .
 
 RUN pip3 install -r requirements.txt
 
